@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Alarm Security System
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+  
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+
+
+    <main class="app-container">
+
+
+        <header class="header">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    🛡️
+                </div>
+
+                <div>
+
+                    <h1>
+                        Alarm Security
+                    </h1>
+
+                    <p>
+                        Motion Detection System
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="systemStatus"
+                class="status offline"
+            >
+
+                <span class="status-dot"></span>
+
+                <span id="statusText">
+                    SYSTEM OFFLINE
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+ 
+        <section class="dashboard">
+
+
+          
+            <div class="camera-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="small-label">
+                            LIVE MONITOR
+                        </span>
+
+                        <h2>
+                            Security Camera
+                        </h2>
+
+                    </div>
+
+
+                    <div
+                        id="motionBadge"
+                        class="motion-badge"
+                    >
+
+                        <span></span>
+
+                        Monitoring
+
+                    </div>
+
+                </div>
+
+
+     
+                <div class="camera-wrapper">
+
+                    <video
+                        id="camera"
+                        autoplay
+                        playsinline
+                        muted
+                    ></video>
+
+
+                    <canvas
+                        id="canvas"
+                        width="640"
+                        height="480"
+                    ></canvas>
+
+
+                    <div
+                        id="cameraPlaceholder"
+                        class="camera-placeholder"
+                    >
+
+                        <div class="camera-icon">
+                            📷
+                        </div>
+
+                        <h3>
+                            Camera Not Started
+                        </h3>
+
+                        <p>
+                            Click "Start Camera" to begin monitoring.
+                        </p>
+
+                    </div>
+
+
+                    <div
+                        id="motionOverlay"
+                        class="motion-overlay"
+                    >
+
+                        <div class="alert-symbol">
+                            🚨
+                        </div>
+
+                        <strong>
+                            MOTION DETECTED
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="controls">
+
+                    <button
+                        id="startButton"
+                        class="primary-button"
+                    >
+
+                        <span>
+                            ▶
+                        </span>
+
+                        Start Camera
+
+                    </button>
+
+
+                    <button
+                        id="stopButton"
+                        class="secondary-button"
+                        disabled
+                    >
+
+                        <span>
+                            ■
+                        </span>
+
+                        Stop Camera
+
+                    </button>
+
+
+                    <button
+                        id="resetButton"
+                        class="secondary-button"
+                    >
+
+                        Reset Detection
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            
+            <aside class="info-panel">
+
+
+                
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        👁️
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Detection
+                        </span>
+
+                        <strong id="detectionStatus">
+                            Inactive
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        📊
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Motion Score
+                        </span>
+
+                        <strong id="motionScore">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="alarmCard"
+                    class="alarm-card"
+                >
+
+                    <div class="alarm-icon">
+                        🔔
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Alarm Status
+                        </span>
+
+                        <strong id="alarmStatus">
+                            Normal
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+           
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        ✉️
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Alert System
+                        </span>
+
+                        <strong>
+                            Email Ready
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </aside>
+
+        </section>
+
+
+
+       
+        <section class="how-section">
+
+            <div class="section-heading">
+
+                <span>
+                    SECURITY SYSTEM
+                </span>
+
+                <h2>
+                    How It Works
+                </h2>
+
+            </div>
+
+
+            <div class="steps">
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Camera
+                        </h3>
+
+                        <p>
+                            Your browser camera provides the live video feed.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Detection
+                        </h3>
+
+                        <p>
+                            OpenCV compares consecutive frames to detect movement.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="step">
+
+                    <div class="step-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Alert
+                        </h3>
+
+                        <p>
+                            The system activates the browser alarm when motion is detected.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+    
+        <footer>
+
+            <p>
+                Alarm Security System
+            </p>
+
+            <span>
+                Python • Flask • OpenCV
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+# =========================================Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ================================Virtual environment
+venv/
+env/
+.venv/
+
+# =================================Environment variables
+.env
+
+# ================================IDE
+.vscode/
+.idea/
+
+# =============================OS
+.DS_Store
+Thumbs.db
+
+# ======================Python cache
+.pytest_cache/
+
+# ===========================Generated images
+motion_detection.jpg
+Real_time_motion_image.jpg
+
+# =======================================Logs
+*.log
